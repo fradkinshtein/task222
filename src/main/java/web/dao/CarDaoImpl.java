@@ -7,18 +7,18 @@ import java.util.List;
 
 @Repository
 public class CarDaoImpl implements CarDao {
-    private List<Car> carList = new ArrayList<>();
+    private List<Car> carList = new ArrayList() {{
+        add(new Car("Lada", "Priora", "Black"));
+        add(new Car("Chevrole", "Niva", "White"));
+        add(new Car("Lambo", "Diablo", "Yellow"));
+        add(new Car("Jeep", "Wrangler", "Green"));
+        add(new Car("Volvo", "XC80", "White"));
+        add(new Car("Mers", "SLK", "Blue"));
+    }};
 
     @Override
-    public List<Car> getCars(String count, List<Car> list) {
-        carList.clear();
-        if (count == null || Integer.parseInt(count) >= 5) {
-            return list;
-        } else {
-            for (int i = 0; i < Integer.parseInt(count); i++) {
-                carList.add(list.get(i));
-            }
-            return carList;
-        }
+    public List<Car> getAllCars() {
+        return carList;
     }
+
 }
